@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.FlashMessages", "Nancy.FlashMessages\Nancy.FlashMessages.csproj", "{D3B512B6-D8B9-4124-BAFE-6E6AA575D5C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.FlashMessages.Tests", "Nancy.FlashMessages.Tests\Nancy.FlashMessages.Tests.csproj", "{701866E2-0F7C-41E6-AC2A-A1C981E22EE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3B512B6-D8B9-4124-BAFE-6E6AA575D5C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B512B6-D8B9-4124-BAFE-6E6AA575D5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B512B6-D8B9-4124-BAFE-6E6AA575D5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B512B6-D8B9-4124-BAFE-6E6AA575D5C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{701866E2-0F7C-41E6-AC2A-A1C981E22EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{701866E2-0F7C-41E6-AC2A-A1C981E22EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{701866E2-0F7C-41E6-AC2A-A1C981E22EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{701866E2-0F7C-41E6-AC2A-A1C981E22EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
