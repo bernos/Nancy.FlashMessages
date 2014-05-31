@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.FlashMessages", "Nanc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.FlashMessages.Tests", "Nancy.FlashMessages.Tests\Nancy.FlashMessages.Tests.csproj", "{701866E2-0F7C-41E6-AC2A-A1C981E22EE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.FlashMessages.Razor", "Nancy.FlashMessages.Razor\Nancy.FlashMessages.Razor.csproj", "{905236A3-41D7-420F-BAA6-C585DD9BF9F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{701866E2-0F7C-41E6-AC2A-A1C981E22EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{701866E2-0F7C-41E6-AC2A-A1C981E22EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{701866E2-0F7C-41E6-AC2A-A1C981E22EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{905236A3-41D7-420F-BAA6-C585DD9BF9F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{905236A3-41D7-420F-BAA6-C585DD9BF9F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{905236A3-41D7-420F-BAA6-C585DD9BF9F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{905236A3-41D7-420F-BAA6-C585DD9BF9F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

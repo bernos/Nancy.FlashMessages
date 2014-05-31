@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Nancy.FlashMessages")]
-[assembly: AssemblyDescription("Core flash message functionality for Nancyfx")]
+[assembly: AssemblyTitle("Nancy.FlashMessages.Razor")]
+[assembly: AssemblyDescription("Razor view HtmlHelper extensions for Nancy.FlashMessages")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Brendan McMahon")]
-[assembly: AssemblyProduct("Nancy.FlashMessages")]
+[assembly: AssemblyProduct("Nancy.FlashMessages.Razor")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("caadf35c-cf64-42af-92bb-5916f8b3fa5a")]
+[assembly: Guid("eb4255f6-441a-48ad-9a2b-60dd085da9ab")]
 
 // Version information for an assembly consists of the following four values:
 //
