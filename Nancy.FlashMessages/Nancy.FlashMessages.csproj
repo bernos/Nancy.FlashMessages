@@ -45,6 +45,7 @@
     <Compile Include="Extensions\NancyContextExtensions.cs" />
     <Compile Include="Extensions\NancyModuleExtensions.cs" />
     <Compile Include="FlashMessages.cs" />
+    <Compile Include="FlashMessagesConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

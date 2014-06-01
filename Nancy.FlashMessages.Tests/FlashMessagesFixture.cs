@@ -13,14 +13,23 @@ namespace Nancy.FlashMessages.Tests
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                new FlashMessages(null);
+                new FlashMessages(null, new FlashMessagesConfiguration());
+            });
+        }
+
+        [Fact]
+        public void Should_Throw_For_Null_Configuration()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                new FlashMessages(new Session.Session(), null);
             });
         }
 
         [Fact]
         public void AddMessage_Should_Persist_Message()
         {
-            var messages = new FlashMessages(new Session.Session());
+            var messages = new FlashMessages(new Session.Session(), new FlashMessagesConfiguration());
 
             messages.AddMessage(FlashMessages.Danger, "Hello world");
 
@@ -32,7 +41,7 @@ namespace Nancy.FlashMessages.Tests
         [Fact]
         public void Should_Not_Remove_Messages_When_Peeking()
         {
-            var messages = new FlashMessages(new Session.Session());
+            var messages = new FlashMessages(new Session.Session(), new FlashMessagesConfiguration());
 
             messages.AddMessage(FlashMessages.Danger, "Hello world");
 
@@ -44,7 +53,7 @@ namespace Nancy.FlashMessages.Tests
         [Fact]
         public void Should_Remove_Messages_When_Popping()
         {
-            var messages = new FlashMessages(new Session.Session());
+            var messages = new FlashMessages(new Session.Session(), new FlashMessagesConfiguration());
 
             messages.AddMessage(FlashMessages.Danger, "Hello world");
 

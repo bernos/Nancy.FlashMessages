@@ -1,4 +1,6 @@
-﻿namespace Nancy.FlashMessages.Extensions
+﻿using System;
+
+namespace Nancy.FlashMessages.Extensions
 {
     /// <summary>
     /// NancyContext extension methods for adding and accessing FlashMessages
@@ -17,23 +19,33 @@
         {
             var messages = GetFlashMessages(context);
 
+            if (messages == null)
+            {
+                throw new Exception("FlashMessages not initialised. Ensure that you have called FlashMessages.Enable() in your Bootstrappers ApplicationStartup method.");
+            }
+
             messages.AddMessage(type, message);
         }
 
         /// <summary>
-        /// Retrieve the FlashMessages instance from the NancyContext. This will lazily
-        /// create a FlashMessages instance on first call
+        /// Retrieve the FlashMessages instance from the NancyContext. 
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
         public static FlashMessages GetFlashMessages(this NancyContext context)
         {
-            if (!context.Items.ContainsKey(ContextKey))
-            {
-                context.Items[ContextKey] = new FlashMessages(context.Request.Session);
-            }
-
             return context.Items[ContextKey] as FlashMessages;
+        }
+
+        /// <summary>
+        /// Set up flash messages for the nancy context. This will be called by
+        /// the before request handler that is set up by FlashMessages.Enable
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="flashMessages"></param>
+        internal static void SetFlashMessages(this NancyContext context, FlashMessages flashMessages)
+        {
+            context.Items[ContextKey] = flashMessages;
         }
     }
 }

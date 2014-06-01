@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Nancy.Bootstrapper;
+using Nancy.FlashMessages.Extensions;
 using Nancy.Session;
 
 namespace Nancy.FlashMessages
@@ -27,19 +29,60 @@ namespace Nancy.FlashMessages
         private const string SessionKey = "__fm";
 
         private readonly ISession _session;
+        private readonly FlashMessagesConfiguration _configuration;
+
+        /// <summary>
+        /// Enables FlashMessages for the Nancy application, using the default 
+        /// FlashMessagesConfigruation implementation
+        /// </summary>
+        /// <param name="pipelines"></param>
+        public static void Enable(IPipelines pipelines)
+        {
+            Enable(pipelines, new FlashMessagesConfiguration());
+        }
+
+        /// <summary>
+        /// Enables FlashMessages for the Nancy application, using the provided 
+        /// configuration
+        /// </summary>
+        /// <param name="pipelines"></param>
+        /// <param name="configuration"></param>
+        public static void Enable(IPipelines pipelines, FlashMessagesConfiguration configuration)
+        {
+            pipelines.BeforeRequest.AddItemToEndOfPipeline(ctx =>
+            {
+                ctx.SetFlashMessages(new FlashMessages(ctx.Request.Session, configuration));
+                return null;
+            });
+        }
+
+        /// <summary>
+        /// Retrieve the configuration
+        /// </summary>
+        public FlashMessagesConfiguration Configuration
+        {
+            get { return _configuration; }
+        }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="session"></param>
-        public FlashMessages(ISession session)
+        /// <param name="configuration"></param>
+        public FlashMessages(ISession session, FlashMessagesConfiguration configuration)
         {
             if (session == null)
             {
                 throw new ArgumentNullException("session", "You need to initialise a session provider in your Nancy Bootstrapper in order to use FlashMessages");
             }
 
+            if (configuration == null)
+            {
+                throw new ArgumentNullException("configuration");
+            }
+
             _session = session;
+            _configuration = configuration;
         }
 
         /// <summary>

@@ -33,8 +33,9 @@
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.22.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.FlashMessages">
-      <HintPath>..\packages\Nancy.FlashMessages.1.0.0.0\lib\net40\Nancy.FlashMessages.dll</HintPath>
+    <Reference Include="Nancy.FlashMessages, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Nancy.FlashMessages.1.0.1.0\lib\net40\Nancy.FlashMessages.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>..\packages\Nancy.Viewengines.Razor.0.22.2\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
