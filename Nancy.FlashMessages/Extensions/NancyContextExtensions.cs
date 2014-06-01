@@ -19,11 +19,6 @@ namespace Nancy.FlashMessages.Extensions
         {
             var messages = GetFlashMessages(context);
 
-            if (messages == null)
-            {
-                throw new Exception("FlashMessages not initialised. Ensure that you have called FlashMessages.Enable() in your Bootstrappers ApplicationStartup method.");
-            }
-
             messages.AddMessage(type, message);
         }
 
@@ -34,6 +29,11 @@ namespace Nancy.FlashMessages.Extensions
         /// <returns></returns>
         public static FlashMessages GetFlashMessages(this NancyContext context)
         {
+            if (!context.Items.ContainsKey(ContextKey))
+            {
+                throw new Exception("FlashMessages not initialised. Ensure that you have called FlashMessages.Enable() in your Bootstrappers ApplicationStartup method.");
+            }
+
             return context.Items[ContextKey] as FlashMessages;
         }
 
