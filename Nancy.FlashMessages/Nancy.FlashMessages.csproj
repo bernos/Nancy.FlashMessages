@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultFlashMessageRenderer.cs" />
     <Compile Include="Extensions\NancyContextExtensions.cs" />
     <Compile Include="Extensions\NancyModuleExtensions.cs" />
     <Compile Include="FlashMessages.cs" />
     <Compile Include="FlashMessagesConfiguration.cs" />
+    <Compile Include="IFlashMessageRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

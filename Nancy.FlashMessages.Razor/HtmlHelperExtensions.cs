@@ -13,8 +13,9 @@ namespace Nancy.FlashMessages
         {
             var alertMessages = helpers.RenderContext.Context.GetFlashMessages();
             var messages = alertMessages.PopMessages(messageType);
-            
-            return new NonEncodedHtmlString(alertMessages.Configuration.MessagesRenderer(messageType, messages));
+            var renderer = alertMessages.Configuration.GetRenderer();
+
+            return new NonEncodedHtmlString(renderer.Render(messageType, messages));
         }
     }
 }
