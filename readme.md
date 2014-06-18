@@ -78,26 +78,26 @@ public class CustomFlashMessagesConfiguration : FlashMessagesConfiguration
 {
 	public CustomFlashMessagesConfiguration() : base()
 	{
-    		GetRenderer = () => new CustomFlashMessageRenderer();
+		GetRenderer = () => new CustomFlashMessageRenderer();
 	}
 
 	public class CustomFlashMessageRenderer : IFlashMessageRenderer
 	{
-    		public string Render(string messageType, IEnumerable<string> messages)
-    		{
-        		var s = new StringBuilder();
+    	public string Render(string messageType, IEnumerable<string> messages)
+    	{
+        	var s = new StringBuilder();
 
-		        s.Append("<ul>");
+	        s.Append("<ul>");
 
-        		foreach (var message in messages)
-        		{
-            			s.Append(string.Format("<li>{0}: {1}</li>", messageType, message));
+       		foreach (var message in messages)
+       		{
+       			s.Append(string.Format("<li>{0}: {1}</li>", messageType, message));
 			}
 
-        		s.Append("</ul>");
+       		s.Append("</ul>");
 
-		        return s.ToString();
-    		}
+	        return s.ToString();
+   		}
 	}
 }
 ```
