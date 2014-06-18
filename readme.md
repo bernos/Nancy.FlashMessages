@@ -4,7 +4,9 @@ Provides a simple API for displaying "flash" messages. Messages are stored in th
 
 Via nuget. Install the Nancy.FlashMessages.Razor package. This will pull down the Nancy.FlashMessages core package as a dependency.
 
-	Install-Package Nancy.FlashMessages.Razor
+```
+Install-Package Nancy.FlashMessages.Razor
+```
 
 ## Usage
 
@@ -12,23 +14,25 @@ Via nuget. Install the Nancy.FlashMessages.Razor package. This will pull down th
 
 Enable Nancy.FlashMessages in the ApplicationStartup method of your bootstrapper
 
-	:::c#
-	protected override void ApplicationStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
-	{
-		base.ApplicationStartup(container, pipelines);
-            
-		FlashMessages.Enable(pipelines);
-	}
+```csharp
+protected override void ApplicationStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
+{
+	base.ApplicationStartup(container, pipelines);
+    
+	FlashMessages.Enable(pipelines);
+}
+```
 
 You can also provide a custom configuration, by sending your own implementation of FlashMessagesConfiguration.
 
-	:::c#
-	protected override void ApplicationStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
-	{
-		base.ApplicationStartup(container, pipelines);
-            
-		FlashMessages.Enable(pipelines, CustomFlashMessagesConfiguration());
-	}
+```csharp
+protected override void ApplicationStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
+{
+	base.ApplicationStartup(container, pipelines);
+    
+	FlashMessages.Enable(pipelines, CustomFlashMessagesConfiguration());
+}
+```
 
 See below for an example of how to use a custom configuration class to alter the message template used when rendering messages in the browser.
 
@@ -36,19 +40,21 @@ See below for an example of how to use a custom configuration class to alter the
 
 Extension methods are added to both the NancyContext and NancyModule classes to make it easy to set messages. From within a NancyModule:
 
-	:::c#
-	public class MyModule : NancyModule {
-		public MyModule() {
-			Get["/"] = _ => {
-				this.FlashMessage(FlashMessages.Info, "Hello world");
-			};
-		}
+```csharp
+public class MyModule : NancyModule {
+	public MyModule() {
+		Get["/"] = _ => {
+			this.FlashMessage(FlashMessages.Info, "Hello world");
+		};
 	}
+}
+```
 
 Or, from anywhere that you have access to the current NancyContext:
 
-	:::c#
-	context.FlashMessage(FlashMessages.Info, "Hello world");
+```csharp
+context.FlashMessage(FlashMessages.Info, "Hello world");
+```
 
 The first argument to `FlashMessage()` is the message type. This is simply a string used to group messages. Normally this value will be used as a css class name in our message template. The standard message types are exposed as static values on the FlashMessages class, but you can use any values you like.
 
@@ -56,8 +62,10 @@ The first argument to `FlashMessage()` is the message type. This is simply a str
 
 Currently, extension methods for the Razor engine HtmlHelpers class are provided, in order to render flash messages in your view.
 
-	@Html.FlashMessages("info")
-    @Html.FlashMessages("success")
+```csharp
+@Html.FlashMessages("info")
+@Html.FlashMessages("success")
+```
 
 The single argument is the message type to render. The most common practice is to place this code in a layout or partial view that is shared across your entire application. Messages are popped off the message buffer when they are rendered, so will only be rendered once per session.
 
@@ -65,30 +73,31 @@ The single argument is the message type to render. The most common practice is t
 
 The default message template that ships is designed to work with twitter bootstrap 3 css. If you'd like to change the template markup you can easily do this by providing a custom FlashMessagesConfiguration that uses your own implementation of the IFlashMessageRenderer interface. For example:
 
-	:::c#
-	public class CustomFlashMessagesConfiguration : FlashMessagesConfiguration
-    {
-        public CustomFlashMessagesConfiguration() : base()
-        {
-            GetRenderer = () => new CustomFlashMessageRenderer();
-        }
+```csharp
+public class CustomFlashMessagesConfiguration : FlashMessagesConfiguration
+{
+	public CustomFlashMessagesConfiguration() : base()
+	{
+    		GetRenderer = () => new CustomFlashMessageRenderer();
+	}
 
-        public class CustomFlashMessageRenderer : IFlashMessageRenderer
-        {
-            public string Render(string messageType, IEnumerable<string> messages)
-            {
-                var s = new StringBuilder();
+	public class CustomFlashMessageRenderer : IFlashMessageRenderer
+	{
+    		public string Render(string messageType, IEnumerable<string> messages)
+    		{
+        		var s = new StringBuilder();
 
-                s.Append("<ul>");
+		        s.Append("<ul>");
 
-                foreach (var message in messages)
-                {
-                    s.Append(string.Format("<li>{0}: {1}</li>", messageType, message));
-                }
+        		foreach (var message in messages)
+        		{
+            			s.Append(string.Format("<li>{0}: {1}</li>", messageType, message));
+			}
 
-                s.Append("</ul>");
+        		s.Append("</ul>");
 
-                return s.ToString();
-            }
-        }
-    }
+		        return s.ToString();
+    		}
+	}
+}
+```
